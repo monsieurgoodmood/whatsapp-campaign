@@ -3,19 +3,21 @@
 
 import os
 import sys
+from dotenv import load_dotenv
+
+# CHARGER .ENV EN PREMIER !
+load_dotenv()
+
 import argparse
 import pandas as pd
 from datetime import datetime
 import logging
 import json
-from dotenv import load_dotenv
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from src.whatsapp_sender import create_sender_from_env
 from config.templates import WhatsAppTemplates
-
-load_dotenv()
 
 log_dir = 'logs'
 os.makedirs(log_dir, exist_ok=True)
