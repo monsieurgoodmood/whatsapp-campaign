@@ -283,9 +283,11 @@ def main():
     print("\n" + "=" * 70)
     print(f"✅ BATCH {batch_number} TERMINÉ")
     print("=" * 70)
-    print(f"   Template A  : {results_a['sent']:,} envoyés ({results_a['success_rate']:.1f}%)")
-    print(f"   Template B  : {results_b['sent']:,} envoyés ({results_b['success_rate']:.1f}%)")
-    print(f"   Total       : {total_sent:,} / {total:,}")
+    sent_a = results_a['sent']
+    sent_b = results_b['sent'] - results_a['sent']
+    print(f"   Template A  : {sent_a:,} envoyés ({sent_a/BATCH_SIZE*100:.1f}%)")
+    print(f"   Template B  : {sent_b:,} envoyés ({sent_b/BATCH_SIZE*100:.1f}%)")
+    print(f"   Total       : {total_sent:,} / {BATCH_SIZE*2:,}")
     print(f"   Log         : {LOG_FILE}")
     print(f"   Résultats   : {results_file}")
     remaining = len(df_eligible) - (BATCH_SIZE * 2)
